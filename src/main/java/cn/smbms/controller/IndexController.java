@@ -2,6 +2,7 @@ package cn.smbms.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.AbstractController;
 
@@ -17,4 +18,14 @@ public class IndexController extends AbstractController {
         modelAndView.setViewName("index");
         return modelAndView;
     }
+    @RequestMapping("welcome")
+    public ModelAndView welcome(@RequestParam(value = "name",required = false)String userName) {
+        System.out.println(userName);
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.addObject("name" ,userName);
+        modelAndView.setViewName("welcome");
+        return modelAndView;
+    }
+
+
 }
